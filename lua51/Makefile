@@ -12,7 +12,7 @@ endif
 
 ifndef LUA51_INCLUDE_DIR
 CGO_CFLAGS+=`pkg-config --cflags $(LUA51_LIBNAME)`
-LUA51_INCLUDE_DIR:=$(shell pkg-config --cflags-only-I $(LUA51_LIBNAME) | sed 's/-I//' | sed 's/[ 	]*$$//')
+LUA51_INCLUDE_DIR:=/usr/include
 else
 CGO_CFLAGS+=-I$(LUA51_INCLUDE_DIR)
 endif
@@ -48,7 +48,7 @@ golua.o: golua.c
 
 lua_defs.go:
 	echo "package lua51;" > lua_defs.go
-	echo "$(LUA_INCLUDE_DIRECTIVES)" "import \"C\"" >> lua_defs.go
-#	echo "import \"C\"" >> lua_defs.go
+	echo "$(LUA_INCLUDE_DIRECTIVES)" | sed 's/\\n$$//' | sed 's/\\n /\n/g' >> lua_defs.go
+	echo "import \"C\"" >> lua_defs.go
 	cat $(LUA_HEADER_FILES) | grep '#define LUA' | sed 's/#define/const/' | sed 's/\([A-Z_][A-Z_]*\)[\t ].*/\1 = C.\1/'  >> lua_defs.go
 
