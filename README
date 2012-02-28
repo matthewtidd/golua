@@ -1,11 +1,23 @@
 Go Bindings for the lua C API
 
-Simplest way to install:
+Installation
+------------
 
-# goinstall -u github.com/matthewtidd/golua/lua51
+    goinstall -u github.com/matthewtidd/golua/lua51
 
-Licensing 
--------------------------
+It's also possible to install just using make:
+
+    make install
+
+Usage
+-----
+
+To import, use the following:
+
+    import "github.com/matthewtidd/golua/lua51"
+
+Licensing
+---------
 GoLua is released under the MIT license.
 Please see the LICENSE file for more information.
 
