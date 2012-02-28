@@ -1,6 +1,7 @@
 package lua51
 
 // #cgo pkg-config: lua
+// #cgo LDFLAGS: -llua51
 // #include <lua.h>
 // #include <lauxlib.h>
 // #include <lualib.h>
