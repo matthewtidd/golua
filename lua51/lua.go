@@ -1,15 +1,15 @@
 package lua51
 
-//#include <lua.h>
-//#include "golua.h"
+// #cgo pkg-config: lua
+// #include <lua.h>
+// #include <lauxlib.h>
+// #include <lualib.h>
+// #include "golua.h"
 import "C"
 
 import "unsafe"
 //TODO: remove
 import "fmt"
-
-
-
 
 //like lua_Writer, but as p will contain capacity, not needed as separate param
 type Writer func(L *State, p []byte, ud interface{});
