@@ -10,7 +10,7 @@ import "C"
 
 import "unsafe"
 //TODO: remove
-import "fmt"
+//import "fmt"
 
 //like lua_Writer, but as p will contain capacity, not needed as separate param
 type Writer func(L *State, p []byte, ud interface{});
@@ -102,7 +102,7 @@ func golua_callgofunction(L interface{}, fid uint) int {
 func golua_gchook(L interface{}, id uint) int {
 	L1 := L.(*State);
 	L1.unregister(id);
-	fmt.Printf("GC id: %d\n",id);
+	//fmt.Printf("GC id: %d\n",id);
 	return 0;
 }
 
